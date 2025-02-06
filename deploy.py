@@ -79,7 +79,7 @@ if __name__ == '__main__':
     # -------------------------------
     
     # Ruta al documento de Word (ajusta el nombre del archivo según corresponda)
-    docx_path = "D:/Llanos/ED_04-02-2025.docx"
+    docx_path = "D:/Llanos/ED_05-02-2025.docx"
     
     # Extraer los títulos de nivel 3 únicos
     unique_headings = extract_heading3_from_docx(docx_path)
