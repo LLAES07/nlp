@@ -1,0 +1,8 @@
+pandas
+numpy
+matplotlib
+scikit-learn
+nltk
+imbalanced-learn
+tensorflow
+keras
