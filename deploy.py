@@ -11,14 +11,14 @@ import pandas as pd
 max_sequence_len = 163  # Usado en entreanamiento
 
 # 1. Cargar el modelo guardado
-model = load_model('modelo_fis.h5')
+model = load_model('modelo_fis_2.h5')
 
 # 2. Cargar el tokenizer
-with open('tokenizer.pickle', 'rb') as handle:
+with open('tokenizer_2.pickle', 'rb') as handle:
     tokenizer = pickle.load(handle)
 
 # 3. Cargar el label encoder
-with open('label_encoder.pickle', 'rb') as handle:
+with open('label_encoder_2.pickle', 'rb') as handle:
     label_encoder = pickle.load(handle)
 
 # Función para procesar un nuevo texto y obtener la predicción
@@ -70,33 +70,32 @@ def extract_heading3_from_docx(docx_path):
 
 # Ejemplo de uso
 if __name__ == '__main__':
-    # Nuevo texto para probar
-    new_text = "Pide informe al tenor del recurso dentro de 05 días hábiles"
-    predict_text(new_text)
+    import pandas as pd
 
-    # -------------------------------
-    # Nueva funcionalidad: Procesar un documento de Word
-    # -------------------------------
-    
     # Ruta al documento de Word (ajusta el nombre del archivo según corresponda)
-    docx_path = "D:/Llanos/ED_05-02-2025.docx"
-    
+    docx_path = "D:/Llanos/ED_19-02-2025.docx"
+
     # Extraer los títulos de nivel 3 únicos
     unique_headings = extract_heading3_from_docx(docx_path)
-    
+
     # Lista para almacenar los resultados
     resultados = []
-    
+
     # Para cada título extraído, se predice la etiqueta y se guarda el resultado
     for heading in unique_headings:
-        etiqueta_predicha = predict_label(heading)
-        resultados.append({'Título': heading, 'Etiqueta_Predicha': etiqueta_predicha})
-    
+        # Dividir el título si contiene "//"
+        partes = heading.split("//")
+        
+        for parte in partes:
+            parte = parte.strip()  # Eliminar espacios adicionales
+            etiqueta_predicha = predict_label(parte)
+            resultados.append({'Título': parte, 'Etiqueta_Predicha': etiqueta_predicha})
+
     # Crear un DataFrame con los resultados
     df_resultados = pd.DataFrame(resultados)
-    
+
     # Guardar el DataFrame en un archivo Excel
     output_excel = 'predicciones.xlsx'
     df_resultados.to_excel(output_excel, index=False)
-    
+
     print(f"\nSe ha generado el archivo Excel '{output_excel}' con los resultados de las predicciones.")
