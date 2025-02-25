@@ -1,4 +1,5 @@
-# ANÁLISIS DE TEXTOS JUDICIALES CON REDES NEURONALES RECURRENTES LSTM
+# CLASIFICACIÓN DE TEXTOS JUDICIALES CON REDES NEURONALES RECURRENTES LSTM
+
 
 ## Descripción del Proyecto
 Sistema de clasificación automática de textos jurídicos mediante una red neuronal LSTM (Long Short-Term Memory) para categorizar descripciones de casos legales en 29 clases diferentes. El modelo permite procesar textos diarios de seguimiento de casos judiciales y asignarles automáticamente categorías específicas basadas en su contenido.
