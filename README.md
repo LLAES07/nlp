@@ -1,46 +1,40 @@
-# **ANÁLISIS REDES NEURONALES RECURRENTES LSTM**
+# ANÁLISIS DE TEXTOS JUDICIALES CON REDES NEURONALES RECURRENTES LSTM
 
-El proyecto consiste en la realización de una **red neuronal (LSTM) de multiclasificación** para datos diarios de textos asociados a la información diaria de recursos legales. EL proposito de este es que através de las descripciones
-diarias se clasifiquen dentro de 29 clases posibles.
+## Descripción del Proyecto
+Sistema de clasificación automática de textos jurídicos mediante una red neuronal LSTM (Long Short-Term Memory) para categorizar descripciones de casos legales en 29 clases diferentes. El modelo permite procesar textos diarios de seguimiento de casos judiciales y asignarles automáticamente categorías específicas basadas en su contenido.
 
+## Contexto de los Datos
+### Fuentes de Datos:
+1. **`df_csv`**: 
+   - Registros diarios de estados de casos judiciales (1+ año de datos)
+   - Columnas relevantes: 
+     - `Trámite` (Filtro: solo "Resolución" y "Sentencia")
+     - `Descripción` (textos a clasificar)
 
-Ica Solicita Diligencia   
-Agréguese A Tabla        
-Ica Informa               
-Evacua Informe            
-Admisibles               
-Téngase Presente           
-Dese Cuenta                
-Apercibe                  
-Ica Amplia Plazo           
-Nhl                        
-Acoge                      
-Concede Apelación          
-Acuerdo                    
-Certifiquese                
-Cs                         
-Rechazada                  
-Art / Numeral              
-Archivado                   
-Fija Costas                 
-Inhabilidad                 
-Acumulación                 
-Oni                         
-Inadmisible/Omite           
-Prescinde                   
-Incompetencia               
-Multa                       
-Fallo/Desestima             
-Retira                     
-Inicio Tramitación          
-
-Los datos consisten en dos dataframes:
-- **_df_csv_**: Dataframe que contiene los datos a clasificar.
-- **_df_clasificador_**: Dataframe clasificado para utilizar como clasificador del primer df.
-
-El dataframe a reclasificar df_csv posee 
+2. **`df_clasificador`**:
+   - Dataset etiquetado con 2,000+ ejemplos clasificados manualmente
+   - Estructura:
+     - `Descripción`: Texto de entrada
+     - `CLASIFICADOR_CORRECTA`: Etiqueta de categoría (29 clases posibles)
 
 
-# CONTINUARÁ  /// TO BE CONTINUED
+## Implementación Técnica
 
+### Preprocesamiento de Datos
+
+1. **Reclasificación df_csv**:
+
+    - Generación de diccionario reclasificador usando df_clasificador
+
+2. **Limpieza de Texto**:
+   - Normalización de caracteres
+   - Eliminación de stopwords y términos no relevantes
+   - Corrección de abreviaturas legales
+
+3. **Tokenización y Padding**:
+
+4. **Data Augmentation**:
+   - Generación de variaciones sintéticas de textos
+   - Inclusión de errores comunes (omisión de puntos, espacios inconsistentes)
+   - Modificaciones léxicas controladas
 
