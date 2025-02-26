@@ -168,6 +168,8 @@ abreviaciones_tp = [
     "Tgse. por",        
     "Teng. por"         
 ]
+
+
 peticion = [
   "Petición",
     "Pet.",
@@ -216,6 +218,7 @@ motivos = [
     
 ]
 recursos = ['recurso', 'demanda', 'apelación', 'solicitud', 'acción', 'la presente acción']
+acciones = ['demanda', 'recurso', 'solicitud', 'apelación', 'petición']
 
 
 def variar_frase(abrev_corte, corte_apelaciones_var, cortes, abrev_tp, nombres, apellidos):
@@ -376,39 +379,13 @@ print(frases_fijacion[:10])
 
 
 
-
-infracciones = [
-    'no cumplir con la normativa migratoria',
-    'infringir leyes laborales',
-    'falta de seguridad laboral',
-    'incumplimiento de normas de protección al consumidor',
-    'contaminación ambiental',
-    'infracciones viales graves',
-    'incumplimiento en entrega de información a afiliados de isapres',
-    'negativa injustificada de cobertura por parte de isapres',
-    'aumento desproporcionado de planes de isapres',
-    'falta de transparencia en contratos de isapres',
-    'no cumple lo ordenado'
-]
-
-rangos_utm = [
-    'de 10 a 50 UTM',
-    'de 50 a 100 UTM',
-    'de 1 a 10 UTM',
-    'de 20 a 200 UTM',
-    'de 5 a 25 UTM',
-    'de 1 a 5 UTM',
-    'de 100 a 300 UTM',
-    'de 500 a 1000 UTM'
-]
-
 def variar_frase(infraccion, rango, corte):
     variaciones = [
         f'La {corte} impone una multa de {rango}'
         f'La multa por {infraccion} es de {rango}.',
         f'La multa por {infraccion}, es de {rango}.',
-        f'La multa por {infraccion} (de {rango}) será aplicada.',
-        f'La multa por {infraccion}  es de {rango}.',
+        f'{abreviaciones_tengase} por aplicada la multa.',
+        f'Aplica multa por {infraccion}  es de {rango}.',
         f'Se impuso una multa de {rango} por {infraccion}.',
         f'Por {infraccion}, se sancionó con una multa de {rango}.',
         f'Por {infraccion}, se multó con un rango de {rango}.',
@@ -619,7 +596,7 @@ def generar_frase_aleatoria():
     abreviaturas = ['Acum.', 'Acumula', 'Acum. a', 'Se acumula a', 'Acumulado a', 'acumúlese', 'tengase por acumulado', 'tgse acumla', 'tp acum0']
     abreviatura = random.choice(abreviaturas)  # Escoge una sola abreviatura
     variaciones = [
-        f'{abreviatura} {rol1} con {rol2} de la corte de {random.choice(cortes_de_chile)}.',
+        f'{abreviatura}:{rol1} con {rol2} de la corte de {random.choice(cortes_de_chile)}.',
         f'{abreviatura} {rol1}, con {rol2} de la corte de {random.choice(abreviaciones_cortes)}',
         f'{random.choice(cortes_de_chile)} {abreviatura} {rol1} (con {rol2}).',
         f'{abreviatura} {rol1}  con {rol2}.',
@@ -633,3 +610,418 @@ def generar_frase_aleatoria():
 # Generar 10 frases aleatorias
 frases_acumula = [generar_frase_aleatoria() for _ in range(300)]
 frases_acumula[:10]
+
+
+
+def variar_frase_tramitacion(recurso):
+    """
+    Genera una frase aleatoria para indicar el inicio de tramitación
+    de un recurso, con variaciones en tildes, errores ortográficos y formato.
+    """
+    variaciones = [
+        f"Inicio de tramitación del {recurso}.",
+        f"Inicio de tramitación del {recurso}",  # sin punto
+        f"Inicio de tramitacion del {recurso}.",   # sin tilde en 'tramitacion'
+        f"Iniciado la tramitación del {recurso}.",
+        f"Iniciado la tramtiacion del {recurso}.",  # error: 'tramtiacion' en vez de 'tramitación'
+        f"Por iniciado la tramitación del {recurso}.",
+        f"Por iniciado la tramtiacion del {recurso}.",
+        f"Iniciado la tramitación en la corte de {cortes_de_chile} del {recurso}.",
+        f"Inicia tramitación del {recurso}.",
+        f"Inicia la tramitación del {recurso}.",
+        f"Inicia la tramtiacion del {recurso}.",
+        f"El inicio de tramitación del {recurso} se realizó.",
+        f"El inicio de tramtiacion del {recurso} se realizó.",
+        f"Se inicia la tramitación del {recurso}.",
+        f"Se inicia la tramtiacion del {recurso}.",
+        f"El {recurso} inicia su tramitación.",
+        f"El {recurso} inicia su tramtiacion.",
+        f"Por el inicio de tramitación del {recurso}.",
+        f"Por el inicio de tramtiacion del {recurso}.",
+        f"Inicio de tramitación en el {recurso}.",
+        f"Inicio de tramtiacion en el {recurso}.",
+        # Agregar variantes con errores de separación o puntuación
+        f"El inicio del {recurso} es por tramitación.",
+        f"El inicio del {recurso} es por tramtiacion.",
+        f"Inicio, tramitación del {recurso}.",
+        f"Inicio tramitación, del {recurso}.",
+    ]
+    return random.choice(variaciones)
+
+def generar_frase_inicio():
+    recurso = random.choice(recursos)
+    return variar_frase_tramitacion(recurso)
+
+# Generar varias frases aleatorias
+frases_inicio = [generar_frase_inicio() for _ in range(200)]
+print(frases_inicio[:10])
+
+
+
+def variar_frase(accion, motivo, accion_corte, tgse, ca_abrev):
+    variaciones = [
+        # Correctas
+        f'La {abreviaciones_cortes} {accion_corte} la {accion}, {motivo}.',
+        f'{accion_corte} la {accion} {motivo}.',
+        f'La {ca_abrev} {accion_corte}, la {accion}, {motivo}.',
+        f'{tgse} por {accion_corte} (la {accion}) {motivo}.',
+        f'La corte {accion_corte}  la {accion} {motivo}.',
+        f'La {accion} es {accion_corte}a, {motivo}.',
+        f'La {accion} es {accion_corte}a  {motivo}.',
+        f'La {accion} es {accion_corte}a, {motivo}.',
+        f'La {accion} es {accion_corte}a (por {motivo}).',
+        f'La {accion} ha sido {accion_corte}a por {motivo}.',
+        f'La {accion} fue {accion_corte}a {motivo}.',
+        f'La {accion} se considera {accion_corte}a, {motivo}.',
+        f'Debido a {motivo}, la {accion} es {accion_corte}a.',
+        f'Por {motivo}, la {accion} se {accion_corte}a.',
+        f'La corte ha {accion_corte} la {accion} por {motivo}.',
+        
+        # Con errores comunes
+        f'La corte {accion_corte} la {accion}, {motivo}',  # Falta de punto al final
+        f'La corte {accion_corte} la {accion} {motivo}',  # Falta de punto al final
+        f'La corte {accion_corte}, la {accion}, {motivo}',  # Coma incorrecta
+        f'La corte {accion_corte} (la {accion}) {motivo}',  # Falta de punto al final
+        f'La corte {accion_corte}  la {accion} {motivo}',  # Espacio extra
+        f'La {accion} es {accion_corte}a, {motivo}',  # Falta de punto al final
+        f'La {accion} es {accion_corte}a  {motivo}',  # Espacio extra
+        f'La {accion} es {accion_corte}a, {motivo}',  # Coma incorrecta
+        f'La {accion} es {accion_corte}a (por {motivo})',  # Falta de punto al final
+        f'La {accion} es {accion_corte}a por {motivo}',  # Falta de coma
+        f'La {accion}es {accion_corte}a {motivo}',  # Espacio faltante
+        f'La corte {accion_corte} la {accion}, {motivo}.',  # Punto extra al final
+        f'La corte {accion_corte} la {accion} {motivo}.',  # Punto extra al final
+        f'La corte {accion_corte} la {accion}, {motivo} ',  # Espacio extra al final
+        f'La corte {accion_corte} la {accion} {motivo} ',  # Espacio extra al final
+    ]
+    return random.choice(variaciones)
+
+def generar_frase_aleatoria():
+    accion = random.choice(acciones)
+    motivo = random.choice(motivos)
+    accion_corte = random.choice(['declara inadmisible', 'omite pronunciamiento sobre', 'omte proncunc.', 'inadmis.', 'inadmisible.'])
+    tgse_ = random.choice(abreviaciones_tengase)
+    ca = random.choice(abreviaciones_cortes)
+    return variar_frase(accion, motivo, accion_corte, tgse_, ca)
+
+# Generar varias frases aleatorias
+frases_omite = [generar_frase_aleatoria() for _ in range(300)]
+print(frases_omite[:10])
+
+
+recursos_ica = [
+    'ICA',
+    'Corte de Apelaciones',
+    'C.A.',
+    'Tribunal',
+    'Corte',
+    'El tribunal competente',
+    'La Corte de Apelaciones',
+    'El órgano jurisdiccional',
+    'La autoridad judicial',
+    'El juzgado de alzada',
+]
+
+acciones_ica = [
+    'informar el domicilio contractual y el FUN actualizado del recurrente dentro de 05 días',
+    'presentar el FUN contractual actualizado',
+    'solicitar el cumplimiento de la sentencia dentro del plazo establecido',
+    'presentar los documentos requeridos para la resolución del caso',
+    'aclarar los hechos relacionados con el incumplimiento de la sentencia',
+    'presentar pruebas adicionales que respalden la demanda',
+    'informar sobre el estado actual del cumplimiento de la sentencia',
+]
+
+motivos_ica = [
+    'para verificar el cumplimiento de la sentencia',
+    'para garantizar la transparencia del proceso',
+    'para asegurar el cumplimiento de los plazos legales',
+    'para resolver discrepancias en la documentación presentada',
+    'para aclarar aspectos no definidos en la resolución',
+    'para garantizar el derecho a la defensa de las partes',
+    'para evaluar la situación actual del caso',
+]
+
+
+import random
+
+def variar_frase_ica(recurso, accion, motivo):
+    variaciones = [
+        # Correctas
+        f'{recurso} solicita {accion} {motivo}.',
+        f'solicita {accion} {motivo}.',
+        f'{recurso} pide {accion} {motivo}.',
+        f'pide {accion} {motivo}.',
+        f'{recurso} requiere {accion} {motivo}.',
+        f'requiere {accion} {motivo}.',
+        f'{recurso} ordena {accion} {motivo}.',
+        f'ordena {accion} {motivo}.',
+        f'{recurso} exige {accion} {motivo}.',
+        f'exige {accion} {motivo}.',
+        f'{recurso} demanda {accion} {motivo}.',
+         f'demanda {accion} {motivo}.'
+
+    ]
+    return random.choice(variaciones)
+
+def generar_frase_ica_aleatoria():
+    recurso = random.choice(recursos_ica)
+    accion = random.choice(acciones_ica)
+    motivo = random.choice(motivos_ica)
+    return variar_frase_ica(recurso, accion, motivo)
+
+# Generar varias frases aleatorias
+frases_ica = [generar_frase_ica_aleatoria() for _ in range(300)]
+print(frases_ica[:10])
+
+
+recursos_tengase = [
+    "T.P.",
+    "Téngase Presente",
+    "T. P.",
+    "Tga. Pte.",
+    "T.P. Sala de Fondo",
+    "T.P. Cumplimiento",
+    "T.P. Archivo",
+    "T.P. Patrocinio",
+    "T.P. Pago",
+    "T.P. Inf. Cumpl.",
+    "Téngase por cumplido"
+]
+
+acciones_tengase = [
+    "pago de costas",
+    "cumplimiento de sentencia",
+    "presentación de documentos",
+    "informe de cumplimiento",
+    "archivo de autos",
+    "patrocinio y poder",
+    "renuncia y nuevo P y P",
+    "ampliación de plazo",
+    "desarchivo para cumplimiento",
+    "vista de causa",
+    "acumulación de documentos"
+]
+
+motivos_tengase = [
+    "por orden de la Sala de Fondo",
+    "según folio N° 16 de autos",
+    "para fines pertinentes",
+    "por resolución judicial",
+    "en atención a lo dispuesto en autos",
+    "para garantizar el estricto cumplimiento",
+    "por requerimiento de la autoridad competente",
+    "en virtud del artículo 45 del Código Procesal",
+    "para efectos de notificación",
+    "en conformidad a la ley N° 20.190"
+]
+
+import random
+
+def variar_frase_tengase(recurso, accion, motivo):
+    variaciones = [
+        # Correctas
+        f'{recurso} {accion} {motivo}.',
+        f'{recurso} {accion}, {motivo}.',
+        f'{recurso} {accion} ({motivo}).',
+        
+        # Con errores comunes
+        f'{recurso}{accion} {motivo}',  # Falta espacio
+        f'{recurso} {accion} {motivo}',  # Falta punto
+        f'{recurso} {accion} ({motivo}',  # Falta cerrar paréntesis
+        f'{recurso} {accion} {motivo} ',  # Espacio extra
+        f'{recurso} {accion.lower()} {motivo}',  # Minúsculas incorrectas
+        f'{recurso.replace(".", "")} {accion} {motivo}',  # Falta punto abreviatura
+        f'{recurso} {accion} - {motivo}'  # Guión inconsistente
+    ]
+    return random.choice(variaciones)
+
+def generar_frase_tengase():
+    recurso = random.choice(recursos_tengase)
+    accion = random.choice(acciones_tengase)
+    motivo = random.choice(motivos_tengase)
+    return variar_frase_tengase(recurso, accion, motivo)
+
+# Generar 300 frases aleatorias
+frases_tengase = [generar_frase_tengase() for _ in range(300)]
+
+# Ejemplos de output (primeras 15 frases)
+print("\n".join(frases_tengase[:15]))
+
+
+cumplase_ = [
+
+    'cúmplase',
+    'cúmplase cs',
+    'cúmplase corte suprema',
+    'c.s.',
+    'c.s',
+    'Cump',
+    "C/se" 
+
+]
+acciones =[
+    'confirma',
+    'revoca',
+    'omite',
+    'incompetencia',
+    'litis pendencia'
+]
+
+
+def variar_frase_tengase(cumplase_, acciones, ):
+    variaciones = [
+        # Correctas
+        f'{cumplase_}/{acciones} .',
+        f'{cumplase_} {acciones}.',
+        f'{cumplase_} ({acciones}).',
+        
+        # Con errores comunes
+        f'{cumplase_}{acciones}',  # Falta espacio
+
+    ]
+    return random.choice(variaciones)
+
+def generar_frase_tengase():
+    recurso = random.choice(cumplase_)
+    accion = random.choice(acciones)
+    return variar_frase_tengase(recurso, accion)
+
+# Generar 300 frases aleatorias
+frases_cs = [generar_frase_tengase() for _ in range(300)]
+
+# Ejemplos de output (primeras 15 frases)
+print("\n".join(frases_cs[:15]))
+
+recursos = ['recurso', 'demanda', 'apelación', 'solicitud', 'acción']
+decisiones = [
+    ('rechaza', 'con costas'),
+    ('rechaza', 'sin costas'),
+    ('rechaza', 'con costas al demandante'),
+    ('rechaza', 'con costas al demandado'),
+    ('rechaza', 'con costas repartidas'),
+]
+
+motivos = [
+    'falta de pruebas',
+    'error procesal',
+    'falta de fundamento',
+    'extemporaneidad',
+    'carecer de interés legítimo',
+    'incumplimiento de cobertura por parte de la isapre',
+    'negativa de trámite por parte de la isapre',
+    'falta de información proporcionada por la isapre',
+    'aumento injustificado de costos por la isapre',
+    'discrepancia en el cálculo de planes por la isapre',
+    'incumplimiento de plazos administrativos por la isapre',
+]
+
+def variar_frase(item, decision, costo, motivo):
+    variaciones = [
+        # Correctas
+        f'El {item} se {decision}a {costo}, por {motivo}.',
+        f'El {item} es {decision}o {costo}, debido a {motivo}.',
+        f'Se {decision}a el {item} {costo} por {motivo}.',
+        f'Se ha {decision}o el {item} {costo} por {motivo}.',
+        f'Debido a {motivo}, el {item} se {decision}a {costo}.',
+        f'El {item} ha sido {decision}o {costo} por {motivo}.',
+        
+        # Con errores comunes
+        f'El {item} se {decision}a {costo}, por {motivo}',  # Falta de punto al final
+        f'El {item} es {decision}o {costo}, debido a {motivo}',  # Falta de punto al final
+        f'Se {decision}a el {item} {costo} por {motivo}',  # Falta de punto al final
+        f'Se ha {decision}o el {item} {costo} por {motivo}',  # Falta de punto al final
+        f'Debido a {motivo}, el {item} se {decision}a {costo}',  # Falta de punto al final
+        f'El {item} ha sido {decision}o {costo} por {motivo}',  # Falta de punto al final
+        f'El {item} se {decision}a {costo} por {motivo} ',  # Espacio extra al final
+        f'El {item}se {decision}a {costo}, por {motivo}',  # Espacio faltante
+    ]
+    return random.choice(variaciones)
+
+def generar_frase_aleatoria():
+    recurso = random.choice(recursos)
+    decision, costo = random.choice(decisiones)
+    motivo = random.choice(motivos)
+    return variar_frase(recurso, decision, costo, motivo)
+
+# Generar varias frases aleatorias
+frases_rechazo = [generar_frase_aleatoria() for _ in range(100)]
+print(frases_rechazo[:10])
+
+
+causales = [
+    'por parentesco con la parte interesada',
+    'por haber intervenido en el caso previamente',
+    'por amistad íntima con el acusado',
+    'por recibir beneficios de una de las partes',
+    'por haber emitido opinión pública sobre el caso',
+    'por tener interés directo en el resultado del proceso'
+]
+
+profesiones = [
+    'ministro de la Corte Suprema',
+    'juez de la Corte de Apelaciones',
+    'abogado defensor',
+    'fiscal',
+    'abogado integrante',
+    'ministro de tribunal de alzada'
+]
+
+
+nombres = ['Pairican', 'González', 'Muñoz', 'Valenzuela', 'Sepúlveda', 'Rodríguez', 'Pérez', 'Silva', 'Contreras', 'Fuentes']
+titulos = ['Sr.', 'Sra.', 'Don', 'Doña', 'Ministro', 'Ministra', 'Juez', 'Jueza', 'Abogado', 'Abogada']
+
+def variar_frase(profesion, causal, titulos, nombres):
+    variaciones = [
+        # Correctas
+        f'El {profesion} se declara inhábil {causal}.',
+        f'El {profesion} se declara inhábil, {causal}.',
+        f'El {profesion} se declara inhábil (por {causal}).',
+        f'El {profesion} se declara inhábil  {causal}.',
+        f'La inhabilidad del {profesion} se fundamenta en {causal}.',
+        f'La inhabilidad del {profesion}, se fundamenta en {causal}.',
+        f'La inhabilidad del {profesion} (se fundamenta en {causal}).',
+        f'La inhabilidad del {profesion}  se fundamenta en {causal}.',
+        f'Debido a {causal}, el {profesion} se inhabilita.',
+        f'El {profesion} manifiesta inhabilidad por {causal}.',
+        f'La causa de inhabilidad del {profesion} es {causal}.',
+        f'Por {causal}, el {profesion} declara su inhabilidad.',
+        f'El {profesion} está inhabilitado debido a {causal}.',
+        f'La inhabilidad del {profesion} se basa en {causal}.',
+        
+        # Con errores comunes
+        f'El {profesion} se declara inhábil {causal}',  # Falta de punto al final
+        f'El {profesion} se declara inhábil, {causal}',  # Falta de punto al final
+        f'El {profesion} se declara inhábil (por {causal})',  # Falta de punto al final
+        f'El {profesion} se declara inhábil  {causal}',  # Espacio extra
+        f'La inhabilidad del {profesion} se fundamenta en {causal}',  # Falta de punto al final
+        f'La inhabilidad del {profesion}, se fundamenta en {causal}',  # Coma incorrecta
+        f'La inhabilidad del {profesion} (se fundamenta en {causal})',  # Falta de punto al final
+        f'La inhabilidad del {profesion}  se fundamenta en {causal}',  # Espacio extra
+        f'Debido a {causal}, el {profesion} se inhabilita',  # Falta de punto al final
+        f'El {profesion}se declara inhábil {causal}',  # Espacio faltante
+        f'El {profesion} se declara inhábil, {causal}.',  # Punto extra al final
+        f'La inhabilidad del {profesion}, se fundamenta en {causal}.',  # Punto extra al final
+        f'Debido a {causal} el {profesion} se inhabilita.',  # Espacio faltante
+        f'El {profesion} se declara inhábil {causal} ',  # Espacio extra al final
+
+        f"Inhabilidad {titulos} {nombres}",
+        f"Se declara inhábil {titulos} {nombres}",
+        f"Declaración de inhabilidad de {titulos} {nombres}",
+        f"Inhabilidad declarada por {titulos} {nombres}",
+        f"{titulos} {nombres} - Inhabilidad",
+        f"Inhabilidad - {titulos} {nombres}",
+        f"Se inhabilita {titulos} {nombres}"
+    ]
+    return random.choice(variaciones)
+
+def generar_frase_aleatoria():
+    profesion = random.choice(profesiones)
+    causal = random.choice(causales)
+    titulo = random.choice(titulos)
+    nombre = random.choice(nombres)
+    return variar_frase(profesion, causal, titulo, nombre)
+
+# Generar varias frases aleatorias
+frases_inhabilidad = [generar_frase_aleatoria() for _ in range(300)]
+print(frases_inhabilidad[:10])
