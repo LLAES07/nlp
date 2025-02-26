@@ -11,14 +11,14 @@ import pandas as pd
 max_sequence_len = 163  # Usado en entreanamiento
 
 # 1. Cargar el modelo guardado
-model = load_model('modelo_fis_2.h5')
+model = load_model('modelo_fis.h5')
 
 # 2. Cargar el tokenizer
-with open('tokenizer_2.pickle', 'rb') as handle:
+with open('tokenizer.pickle', 'rb') as handle:
     tokenizer = pickle.load(handle)
 
 # 3. Cargar el label encoder
-with open('label_encoder_2.pickle', 'rb') as handle:
+with open('label_encoder.pickle', 'rb') as handle:
     label_encoder = pickle.load(handle)
 
 # Función para procesar un nuevo texto y obtener la predicción
@@ -73,7 +73,7 @@ if __name__ == '__main__':
     import pandas as pd
 
     # Ruta al documento de Word (ajusta el nombre del archivo según corresponda)
-    docx_path = "D:/Llanos/ED_19-02-2025.docx"
+    docx_path = "D:/Llanos/ED_20-02-2025.docx"
 
     # Extraer los títulos de nivel 3 únicos
     unique_headings = extract_heading3_from_docx(docx_path)
