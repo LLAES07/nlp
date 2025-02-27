@@ -209,7 +209,11 @@ motivos = [
     
 ]
 recursos = ['recurso', 'demanda', 'apelación', 'solicitud', 'acción', 'la presente acción']
-acciones = ['demanda', 'recurso', 'solicitud', 'apelación', 'petición']
+
+
+
+
+acciones = ['demanda', 'recurso', 'solicitud', 'apelación', 'petición' ]
 
 
 
@@ -237,3 +241,105 @@ rangos_utm = [
     'de 100 a 300 UTM',
     'de 500 a 1000 UTM'
 ]
+
+solicitudes = ['presentar pruebas', 'comparecer', 'notificar', 'cumplir con la orden judicial', 'pagar la fianza','dar cumplimiento']
+
+
+recursos_ica = [
+    'ICA',
+    'Corte de Apelaciones',
+    'C.A.',
+    'Tribunal',
+    'Corte',
+    'El tribunal competente',
+    'La Corte de Apelaciones',
+    'El órgano jurisdiccional',
+    'La autoridad judicial',
+    'El juzgado de alzada',
+]
+
+acciones_ica = [
+    'informar el domicilio contractual y el FUN actualizado del recurrente dentro de 05 días',
+    'presentar el FUN contractual actualizado',
+    'solicitar el cumplimiento de la sentencia dentro del plazo establecido',
+    'presentar los documentos requeridos para la resolución del caso',
+    'aclarar los hechos relacionados con el incumplimiento de la sentencia',
+    'presentar pruebas adicionales que respalden la demanda',
+    'informar sobre el estado actual del cumplimiento de la sentencia',
+]
+
+motivos_ica = [
+    'para verificar el cumplimiento de la sentencia',
+    'para garantizar la transparencia del proceso',
+    'para asegurar el cumplimiento de los plazos legales',
+    'para resolver discrepancias en la documentación presentada',
+    'para aclarar aspectos no definidos en la resolución',
+    'para garantizar el derecho a la defensa de las partes',
+    'para evaluar la situación actual del caso',
+]
+
+cumplase_ = [
+
+    'cúmplase',
+    'cúmplase cs',
+    'cúmplase corte suprema',
+    'c.s.',
+    'c.s',
+    'Cump',
+    "C/se" 
+
+]
+acciones =[
+    'confirma',
+    'revoca',
+    'omite',
+    'incompetencia',
+    'litis pendencia'
+]
+
+
+decisiones_rechaza = [
+    ('rechaza', 'con costas'),
+    ('rechaza', 'sin costas'),
+    ('rechaza', 'con costas al demandante'),
+    ('rechaza', 'con costas al demandado'),
+    ('rechaza', 'con costas repartidas'),
+]
+
+motivos_rechaza = [
+    'falta de pruebas',
+    'error procesal',
+    'falta de fundamento',
+    'extemporaneidad',
+    'carecer de interés legítimo',
+    'incumplimiento de cobertura por parte de la isapre',
+    'negativa de trámite por parte de la isapre',
+    'falta de información proporcionada por la isapre',
+    'aumento injustificado de costos por la isapre',
+    'discrepancia en el cálculo de planes por la isapre',
+    'incumplimiento de plazos administrativos por la isapre',
+    'no cumplir lo estipulado en el plan'
+]
+
+
+causales = [
+    'por parentesco con la parte interesada',
+    'por haber intervenido en el caso previamente',
+    'por amistad íntima con el acusado',
+    'por recibir beneficios de una de las partes',
+    'por haber emitido opinión pública sobre el caso',
+    'por tener interés directo en el resultado del proceso'
+]
+
+profesiones = [
+    'ministro de la Corte Suprema',
+    'juez de la Corte de Apelaciones',
+    'abogado defensor',
+    'fiscal',
+    'abogado integrante',
+    'ministro de tribunal de alzada'
+]
+
+
+nombres = ['Pairican', 'González', 'Muñoz', 'Valenzuela', 'Sepúlveda', 'Rodríguez', 'Pérez', 'Silva', 'Contreras', 'Fuentes']
+titulos = ['Sr.', 'Sra.', 'Don', 'Doña', 'Ministro', 'Ministra', 'Juez', 'Jueza', 'Abogado', 'Abogada', 'Ministro', 'Ministra', 'Presidente', 'Pdte']
