@@ -1,5 +1,5 @@
 import random
-import base_generator as b
+from . import base_generator as b
 import numpy as np
 
 
@@ -29,11 +29,11 @@ def variar_frase(infraccion, rango, corte, tgse):
     return random.choice(variaciones)
 
 def generar_frase_aleatoria():
-    infraccion = random.choice(b.infracciones)
+    infraccion_sel = random.choice(b.infracciones)
     rango = random.choice(b.rangos_utm)
     corte = random.choice(b.formas_corte_apelaciones)
     tengase = random.choice(b.abreviaciones_tengase)
-    return variar_frase(infraccion, rango, corte, tengase)
+    return variar_frase(infraccion_sel, rango, corte, tengase)
 
 def generar_dataset(n=300):
     return [generar_frase_aleatoria() for _ in range(n)]

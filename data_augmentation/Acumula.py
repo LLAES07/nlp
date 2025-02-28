@@ -1,5 +1,5 @@
 import random
-import base_generator as b
+from . import base_generator as b
 import numpy as np
 
 # Genera un número aleatorio de 3 dígitos

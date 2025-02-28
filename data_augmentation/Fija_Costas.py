@@ -1,5 +1,5 @@
 import random
-import base_generator as b
+from . import base_generator as b
 import numpy as np
 
 def variar_frase(concepto, medida, valor, corte, parte_):

@@ -1,5 +1,5 @@
 import random
-import base_generator as b
+from . import base_generator as b
 import numpy as np
 
 def variar_frase(abrev_corte, corte_apelaciones_var, cortes, abrev_tp, nombres, apellidos, num):

@@ -1,6 +1,6 @@
 
 import random
-import base_generator as b
+from . import base_generator as b
 import numpy as np
 
 
@@ -13,7 +13,11 @@ def variar_frase_tengase(tp, pide):
         f'{tp} y por acompañados los documentos',
         f'{tp} por cumplida la sentencia',
         f'{tp} por cumplida lo {pide} por la corte',
-        f'{tp}'
+        f'{tp} el mandato de el ab. recurrido',
+        f'{tp} el mandato de el ab. recurrente',
+        f'{tp} el pago de costas por la suma de',
+        f'se {tp} las costas solicitadas pro el recurrente'
+ 
 
     ]
     return random.choice(variaciones)

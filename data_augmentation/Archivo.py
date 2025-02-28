@@ -1,7 +1,7 @@
 
 
 import random
-import base_generator as b
+from . import base_generator as b
 import numpy as np
 
 

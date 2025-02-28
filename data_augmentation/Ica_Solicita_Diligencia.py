@@ -1,6 +1,6 @@
 
 import random
-import base_generator as b
+from . import base_generator as b
 import numpy as np
 
 
@@ -17,7 +17,8 @@ def variar_frase_ica(recurso, accion, motivo, solicita, num):
         f'{recurso} exige {accion} {motivo}.',
         f'exige {accion} {motivo}.',
         f'{recurso} demanda {accion} {motivo}.',
-         f'demanda {accion} {motivo}.'
+        f'demanda {accion} {motivo}.',
+        f' ER/Cumple lo {solicita}'
 
     ]
     return random.choice(variaciones)

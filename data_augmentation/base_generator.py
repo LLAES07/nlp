@@ -38,6 +38,19 @@ cortes_de_chile = [
     "Punta Arenas"
 ]
 
+inadmisible_formas = [
+    "Inadmisible"
+    "inadmis.",  # forma habitual con punto
+    "inadm.",    # versión más corta, también con punto
+    "inad.",     # abreviación más reducida
+    "inadm",      # sin punto, menos formal pero usada en ciertos contextos
+    "inadmisible",   # confusión en la colocación de la 's'
+    "inadmisivle",   # error en el orden de las letras
+    "inadmisble",    # omisión de la 'i' en la sílaba "isi"
+    "inadmisisble",  # adición extra de una 'is'
+    "inadmibible"    # error al sustituir la 's' por 'b'
+]
+
 abreviaciones_cortes = [
     "ARC",  # Arica
     "IQQ",  # Iquique
@@ -289,14 +302,25 @@ cumplase_ = [
     "C/se" 
 
 ]
-acciones =[
+acciones_cs =[
     'confirma',
     'revoca',
     'omite',
-    'incompetencia',
-    'litis pendencia'
+    '/incompetencia',
+    'litis pendencia',
+    'confirmada con costas',
+    'revocada si costas',
+    'revocada acogiendo el plan'
+    'revocada sin referirse al plan de salud'
 ]
 
+resoluciones_acoge = ["con costas", "sin costas", "con costas parciales", 'sin costas', 's/ costas', 'no costas', 'no se pronuncia por costas']
+
+isapres = ["Isapre Banmédica", "Isapre Colmena", "Isapre Cruz Blanca", 'Nueva Mas Vida S.A.', 'NMV']
+
+pronunciamientos = ["otorgue la cobertura", "no aplique alza", "mantenga las condiciones", 'restituir los cobros alegados', 'mantener el plan de salud', 'devolver excendentes']
+
+planes = ["Plan GES", "Plan Base", "Plan Complementario", 'PB', 'TF', 'TFRN2']
 
 decisiones_rechaza = [
     ('rechaza', 'con costas'),
@@ -318,9 +342,60 @@ motivos_rechaza = [
     'aumento injustificado de costos por la isapre',
     'discrepancia en el cálculo de planes por la isapre',
     'incumplimiento de plazos administrativos por la isapre',
-    'no cumplir lo estipulado en el plan'
+    'no cumplir lo estipulado en el plan',
+    'no adjuntar los documentos solicitados',
+    'pasar del plazo judicial'
 ]
 
+oni_variaciones = [
+
+    'ONI',
+    'o.n.i',
+    'oni.',
+    'o.n.i.',
+    'Orden de no innovar',
+    'ordern de no innonvar'
+]
+variaciones_dese_cuenta = [
+    "Dese cuenta",
+    "dc cuenta",
+    "d cuenta",
+    "d/cta",
+    "d. cuenta",
+    "d-cuenta",
+    "d cta",
+    "dc. cuenta",
+    "des cuenta",
+    "dse cuenta",
+    "dcta"
+]
+
+variaciones_no_ha_lugar = [
+    "No ha lugar",      # Forma correcta
+    "no ha lugar",      # En minúsculas
+    "No Ha Lugar",      # Con mayúsculas en cada palabra
+    "NHL",              # Abreviatura en mayúsculas
+    "nhl",              # Abreviatura en minúsculas
+    "N.H.L.",           # Abreviatura con puntos
+    "n.h.l.",           # Abreviatura en minúsculas con puntos
+    "no h a lugar",     # Error común: separación incorrecta
+    "no ha lugáor",     # Error de tipeo: letra de más o mal ubicada
+    "no ha lugor",      # Error: omisión de la "a" en "lugar"
+    "no ha lgar",       # Error: omisión de la "u"
+]
+
+motivos_inadmisible = [
+    "No cumplir lo ordenado por la corte.",
+    "Presentación extemporánea del recurso.",
+    "Falta de fundamentación jurídica adecuada.",
+    "Incumplimiento de requisitos formales establecidos.",
+    "Falta de interés legítimo o parte afectada.",
+    "Duplicidad del recurso o presentación reiterada sin novedad.",
+    "No haber agotado la vía administrativa previa, cuando fuera obligatorio.",
+    "Incompetencia del tribunal para conocer el recurso.",
+    "Error en la presentación o tramitación del expediente.",
+    "Inexistencia de legitimación activa o pasiva en el demandante."
+                       ]
 
 causales = [
     'por parentesco con la parte interesada',
@@ -343,3 +418,26 @@ profesiones = [
 
 nombres = ['Pairican', 'González', 'Muñoz', 'Valenzuela', 'Sepúlveda', 'Rodríguez', 'Pérez', 'Silva', 'Contreras', 'Fuentes']
 titulos = ['Sr.', 'Sra.', 'Don', 'Doña', 'Ministro', 'Ministra', 'Juez', 'Jueza', 'Abogado', 'Abogada', 'Ministro', 'Ministra', 'Presidente', 'Pdte']
+
+
+
+concede_apelacion_motivos = [
+    'Plan pago',
+    'pb',
+    'ges',
+    'prima extra    ordinaria'
+]
+
+
+certifiquese = [
+
+    'certifiquese',
+    'cert.',
+    'certifíquese', 
+    'certi.',
+    'certificación',
+    'se certifica',
+    'certif.',
+    'cfrt.',
+    
+]
