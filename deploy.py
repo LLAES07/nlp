@@ -8,17 +8,26 @@ from docx import Document  # Necesitas instalar python-docx: pip install python-
 import pandas as pd 
 
 
-max_sequence_len = 163  # Usado en entreanamiento
+import nltk
+from nltk.corpus import stopwords
+
+# Descargar las stopwords si no lo has hecho antes
+nltk.download('stopwords')
+
+# Obtener las stopwords en español
+stop_words_es = set(stopwords.words('spanish'))
+
+max_sequence_len = 88  # Usado en entreanamiento
 
 # 1. Cargar el modelo guardado
-model = load_model('modelo_fis.h5')
+model = load_model('modelo_final.h5')
 
 # 2. Cargar el tokenizer
-with open('tokenizer.pickle', 'rb') as handle:
+with open('tokenizer_2.pickle', 'rb') as handle:
     tokenizer = pickle.load(handle)
 
 # 3. Cargar el label encoder
-with open('label_encoder.pickle', 'rb') as handle:
+with open('label_encoder_2.pickle', 'rb') as handle:
     label_encoder = pickle.load(handle)
 
 # Función para procesar un nuevo texto y obtener la predicción
@@ -48,7 +57,12 @@ def predict_label(text):
     Retorna la etiqueta (clase) con mayor probabilidad para un texto dado.
     """
     cleaned_text = cleaning_data(text)
-    tokenized_text = tokenizer.texts_to_sequences([cleaned_text])
+
+    words = cleaned_text.split()
+    filtered_words = [word for word in words if word.lower() not in stop_words_es]
+    cleaned_no_stop = ' '.join(filtered_words)
+
+    tokenized_text = tokenizer.texts_to_sequences([cleaned_no_stop])
     padded_text = pad_sequences(tokenized_text, maxlen=max_sequence_len, padding='pre')
     prediction = model.predict(padded_text)
     top_index = prediction[0].argmax()
@@ -73,7 +87,7 @@ if __name__ == '__main__':
     import pandas as pd
 
     # Ruta al documento de Word (ajusta el nombre del archivo según corresponda)
-    docx_path = "D:/Llanos/ED_20-02-2025.docx"
+    docx_path = "D:/Llanos/ED_27-02-2025.docx"
 
     # Extraer los títulos de nivel 3 únicos
     unique_headings = extract_heading3_from_docx(docx_path)

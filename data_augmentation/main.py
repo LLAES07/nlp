@@ -26,7 +26,7 @@ from . import Prescinde
 from . import Concede_apelacion
 from . import Art_numeral as Articulo
 from . import Acoge as Acogida
-from . import certifiquese
+from . import Certifiquese
 
 
 def main():
@@ -54,7 +54,7 @@ def main():
     data_concede_apelacion = Concede_apelacion.generar_dataset(300)
     data_articulo = Articulo.generar_dataset(300)
     data_acoge = Acogida.generar_dataset(300)
-    data_certifiquese = certifiquese.generar_dataset(300)
+    data_certifiquese = Certifiquese.generar_dataset(300)
     # Dataframes por cada clase
     dfs = []
     dfs.append(pd.DataFrame({'frase': data_acuerdo, 'etiqueta': 'Acuerdo'}))
