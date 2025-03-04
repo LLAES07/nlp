@@ -62,7 +62,7 @@ def main():
     data_acoge = Acogida.generar_dataset(300)
     data_certifiquese = Certifiquese.generar_dataset(300)
     data_dese_cuenta = Dese_cuenta.generar_dataset(300)
-    data_ica_informa = Ica_Informa.generar_dataset(300)
+    data_ica_informa = Ica_Informa.generar_dataset(200)
     data_ica_agrega = Agreguese.generar_dataset(100)
     data_evacua_informe = Evacuainforme.generar_dataset(100)
     data_admisible = Admisible.generar_dataset(30)

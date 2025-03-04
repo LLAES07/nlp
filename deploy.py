@@ -87,7 +87,7 @@ if __name__ == '__main__':
     import pandas as pd
 
     # Ruta al documento de Word (ajusta el nombre del archivo según corresponda)
-    docx_path = "D:/Llanos/ED_28-02-2025.docx"
+    docx_path = "D:/Llanos/ED_03-03-2025.docx"
 
     # Extraer los títulos de nivel 3 únicos
     unique_headings = extract_heading3_from_docx(docx_path)

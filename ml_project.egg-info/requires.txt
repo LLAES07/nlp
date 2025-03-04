@@ -1,0 +1,14 @@
+pandas
+numpy
+matplotlib
+scikit-learn
+nltk
+imbalanced-learn
+tensorflow
+keras
+docx
+python-docx
+openpyxl
+spacy
+seaborn
+dill

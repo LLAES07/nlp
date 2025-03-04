@@ -31,7 +31,22 @@ def variar_frase(planes, num, comunica, peticion, tengase_var):
         f'{comunica} Sentencia (LQL)',
         f'{comunica} Sentencia (FP)',
         f'Como se {peticion}',
-        f'{tengase_var} por reacusado'
+        f'{tengase_var} por reacusado',
+        f'Reposición Rechaza(rbf)',
+        f'Reposición Rechaza(JQQ)',
+        f'({planes}) Reposición Rechaza(LLQ)',
+        f'Habilita alegatos',
+        f'hab. alegatos del ministro',
+        f'hab. alegatos de la recurrida',
+        f'habilita alegatos parte recurrente',
+        f'Comunca inhabilidades',
+        f'comunica inhabilidades',
+        f'Remitido recurso a la isapre',
+        f'Remitido recurso a la corte'
+        f'Remitido documento',
+        f'Por no presentado escrito {tengase_var} presente'
+        f'No presenta carta {tengase_var} presente'
+
 
 
     ]

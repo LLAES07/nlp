@@ -55,7 +55,14 @@ def variar_frase_ica(recurso, accion, motivo, solicita, num, planes, sigla_, par
         f'({planes}) {solicita}.Informe ({sigla_})',
         f'({planes}) Conciliese Suma',
         f'({planes}) Pide Cta.Informe ({sigla_})',
-        f'solicita informe a la {partes}'
+        f'solicita informe a la {partes}',
+        f'{solicita} cuenta a la Isapre del informe ordenado remitir',
+        f'Reposición Rechaza/{solicita} inform',
+        f'Reposición Rechaza/{solicita} informe',
+        f'{solicita} Inf. Cumplimiento',
+        f'{solicita} Inf. cumplimiento de sentencia'
+
+
 
 
 

@@ -1,0 +1,2 @@
+[2025-03-04 16:51:04,770] 78 root - INFO - Leyendo los datos de entrenamiento
+[2025-03-04 16:51:04,942] 90 root - INFO - Pipeline guardado en artifact\preprocessor.pkl
