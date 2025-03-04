@@ -1,0 +1,8 @@
+[2025-03-04 17:16:21,036] 24 root - INFO - Iniciando el proceso de lectura de la inyección de componentes
+[2025-03-04 17:16:21,117] 29 root - INFO - Lectura del archvio exitosa
+[2025-03-04 17:16:21,117] 32 root - INFO - La carpeta ha sido generada o ya está presente
+[2025-03-04 17:16:21,118] 35 root - INFO - Generando datos aumentados
+[2025-03-04 17:16:21,410] 47 root - INFO - Archivo raw ha sido creado
+[2025-03-04 17:16:21,520] 79 root - INFO - Leyendo los datos de entrenamiento
+[2025-03-04 17:16:21,699] 91 root - INFO - Pipeline guardado en artifacts\preprocessor.pkl
+[2025-03-04 17:16:21,706] 64 root - INFO - Transformación de datos finalizada correctamente.

@@ -1,0 +1,6 @@
+[2025-03-04 17:14:48,590] 24 root - INFO - Iniciando el proceso de lectura de la inyección de componentes
+[2025-03-04 17:14:48,670] 29 root - INFO - Lectura del archvio exitosa
+[2025-03-04 17:14:48,670] 32 root - INFO - La carpeta ha sido generada o ya está presente
+[2025-03-04 17:14:48,670] 35 root - INFO - Generando datos aumentados
+[2025-03-04 17:14:48,959] 47 root - INFO - Archivo raw ha sido creado
+[2025-03-04 17:14:48,961] 97 root - ERROR - Error en iniciando_trasnformacion_datos
