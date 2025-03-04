@@ -17,7 +17,11 @@ partes = [
     "Denunciante", "Den.", "Dnte.",
     "Denunciado", "Dndo.", "Denunc.",
     "Testigo", "Test.", "Tstgo."
+    "rcda", 'isapre'
 ]
+
+
+
 
 cortes_de_chile = [
     "Arica",
@@ -198,7 +202,9 @@ peticion = [
     "Exige",
     "Exg.",
     "Petic.",
-    "Solic."
+    "Solic.",
+    'Requiere',
+    'req.'
 ]
 
 conceptos = ['costos', 'valores', 'tarifas', 'precios', 'cotizaciones']
@@ -320,7 +326,8 @@ isapres = ["Isapre Banmédica", "Isapre Colmena", "Isapre Cruz Blanca", 'Nueva M
 
 pronunciamientos = ["otorgue la cobertura", "no aplique alza", "mantenga las condiciones", 'restituir los cobros alegados', 'mantener el plan de salud', 'devolver excendentes']
 
-planes = ["Plan GES", "Plan Base", "Plan Complementario", 'PB', 'TF', 'TFRN2']
+planes = ["Plan GES", "Plan Base", "Plan Complementario", 'PB', 'TF', 'TFRN2', 'PBEx24', 'PBEx25', 'PBEx26', 'NC', 'PB2024'
+          , 'PB2025', 'GES2025', 'GES2026', 'PBEx24', 'PBEx25', 'PBEx26']
 
 decisiones_rechaza = [
     ('rechaza', 'con costas'),
@@ -412,7 +419,122 @@ profesiones = [
     'abogado defensor',
     'fiscal',
     'abogado integrante',
-    'ministro de tribunal de alzada'
+    'ministro de tribunal de alzada',
+    'ab. int',
+    'abog. int',
+
+]
+
+comunica_var = [
+'informa', 'notifica', 'transmite', 'anuncia', 'avisa', 'participa', 'revela', 'entera', 'expresa', 
+'comparte', 'remite', 'declara', 'manifiesta', 'publica', 'difunde', 'corrige', 'enmienda', 'repara', 
+'arregla', 'modifica', 'ajusta', 'subsana', 'soluciona', 'mejora', 'reconsidera', 'revisa', 'reporta', 
+ 'advierte', 'indica', 'documenta', 'previene', 'reseña', 'instruye', 'expone', 'alerta', 'denuncia', 'requiere']
+
+
+prescinde_informe_variaciones = [
+    "prescinde informe",
+    "presc. informe",
+    "presc. inf.",
+    "prescinde del informe",
+    "presc. del informe",
+    "presc. del inf.",
+    "prescindió informe",
+    "prescindio del informe",
+    "prescindió inf.",
+    "prescindio inf.",
+    "prescindiendo informe",
+    "prescindiendo del informe",
+    "prescindiendo inf.",
+    "se prescinde informe",
+    "se prescinde del informe",
+    "se prescinde inf.",
+    "se presc. inf.",
+    "se presc. del inf.",
+    ' Presc.Inf/Aer',
+    'En Relación/Prescinde Informe'
+]
+
+admisible_formas = [
+    "se declara admisible",
+    "declara admisible",
+    "dcl. admisible",
+    "admisible",
+    "se declara admisible el recurso",
+    "declara admisible el recurso",
+    "dcl. admisible recurso",
+    "admisible recurso",
+    "se admite a trámite",
+    "admite a trámite",
+    "adm. trámite",
+    "admitido a trámite",
+    "acoge a tramitación",
+    "acog. tramitación",
+    "se acoge a tramitación",
+    "acogido a tramitación",
+    "interpuesto recurso",
+    "intr. recurso",
+    "recurso interpuesto",
+    "recurso intr.",
+    "se ha interpuesto recurso",
+    "ha interpuesto recurso",
+    "se interpone recurso",
+    "interpone recurso",
+    'AcogeATramitación',
+    'AcogeaTramitac.',
+    'Inter.Rec.Protecc Isapre',
+    'Acoge a Tram.',
+    'AcogeATramitac',
+    'Acoge a tram.'
+   
+]
+
+variaciones_ampliacion = [
+    "Concede ampliación",
+    "Concede ampliacion",
+    "Conc. ampliación",
+    "Conc. ampliacion",
+    "Concede amp.",
+    "Conc. amp.",
+    "Ampliación concedida",
+    "Ampliacion concedida",
+    "Amp. concedida",
+    "Otorgar ampliación",
+    "Otorgar ampliacion",
+    "Otorga ampliación",
+    "Otorga ampliacion",
+    'Conc.amp.'
+]
+
+evacua_infome_var = [
+
+    'ev.informe/AER',
+    'evacuado informe',
+    'téngase por evacuado/aer',
+    'por evacuado informe',
+    'certifíque/ev.inf.fdo',
+    'Ev. inf ',
+    'aer',
+    'evinf',
+    'EvInf/Fondo/Aer',
+    'aer/fondo',
+    'Por eva/ Informe',
+    'evinf/fondo/aer',
+    'por eva/informe',
+    'Ev.Informe/A.R/',
+    'Ev.Inf/F.Oport/Aer',
+    'Ev.Inf.Fdo/Aer',
+    'fondo/aer',
+    'xevac.inf'
+
+]
+
+agreguese_var = [
+    "agréguese",
+    "agréguese ext",
+    "agrég.",
+    "agreg.ext.",
+    "agreg.ext."
 ]
 
 

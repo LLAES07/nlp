@@ -3,7 +3,7 @@ from . import base_generator as b
 import numpy as np
 
 
-def variar_frase(infraccion, rango, corte, tgse):
+def variar_frase(infraccion, rango, corte, tgse, parte):
     variaciones = [
         f'La {corte} impone una multa de {rango}'
         f'La multa por {infraccion} es de {rango}.',
@@ -24,7 +24,12 @@ def variar_frase(infraccion, rango, corte, tgse):
         f'La comisión de {infraccion} se multa con {rango}.',
         # Incluyendo errores comunes
         f'La multa por {infraccion} es de {rango}',  
-        f'Se impuso una multa de {rango} por {infraccion}'
+        f'Se impuso una multa de {rango} por {infraccion}',
+        f'Aplica multa en beneficio fiscal',
+        f'Aplica multa en beneficio de la {parte}'
+        f'Multa/Pide FUN',
+        f'Multa/Solicita FUN contractual'
+
     ]
     return random.choice(variaciones)
 
@@ -33,7 +38,8 @@ def generar_frase_aleatoria():
     rango = random.choice(b.rangos_utm)
     corte = random.choice(b.formas_corte_apelaciones)
     tengase = random.choice(b.abreviaciones_tengase)
-    return variar_frase(infraccion_sel, rango, corte, tengase)
+    parte_sel = random.choice(b.partes)
+    return variar_frase(infraccion_sel, rango, corte, tengase,parte_sel)
 
 def generar_dataset(n=300):
     return [generar_frase_aleatoria() for _ in range(n)]

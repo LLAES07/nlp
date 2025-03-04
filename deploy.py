@@ -17,7 +17,7 @@ nltk.download('stopwords')
 # Obtener las stopwords en español
 stop_words_es = set(stopwords.words('spanish'))
 
-max_sequence_len = 88  # Usado en entreanamiento
+max_sequence_len = 120  # Usado en entreanamiento
 
 # 1. Cargar el modelo guardado
 model = load_model('modelo_final.h5')
@@ -87,7 +87,7 @@ if __name__ == '__main__':
     import pandas as pd
 
     # Ruta al documento de Word (ajusta el nombre del archivo según corresponda)
-    docx_path = "D:/Llanos/ED_27-02-2025.docx"
+    docx_path = "D:/Llanos/ED_28-02-2025.docx"
 
     # Extraer los títulos de nivel 3 únicos
     unique_headings = extract_heading3_from_docx(docx_path)

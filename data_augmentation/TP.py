@@ -7,7 +7,7 @@ import numpy as np
 
 import random
 
-def variar_frase_tengase(tp, pide):
+def variar_frase_tengase(tp, pide, partes, planes):
     variaciones = [
         # Correctas
         f'{tp} y por acompañados los documentos',
@@ -16,7 +16,12 @@ def variar_frase_tengase(tp, pide):
         f'{tp} el mandato de el ab. recurrido',
         f'{tp} el mandato de el ab. recurrente',
         f'{tp} el pago de costas por la suma de',
-        f'se {tp} las costas solicitadas pro el recurrente'
+        f'se {tp} las costas solicitadas pro el recurrente', 
+        f'{tp} lo informado por {partes}',
+        f'({planes})T.pte/v.e.forma (JBC)',
+        f'({planes})T.pte/v.e.forma (GC)',
+        f'({planes}){tp} (GC)',
+        f'{tp} inf {partes}(costas)'
  
 
     ]
@@ -25,7 +30,9 @@ def variar_frase_tengase(tp, pide):
 def generar_frase_tengase():
     tengase_sel = random.choice(b.abreviaciones_tp)
     pide_sel = random.choice(b.peticion)
-    return variar_frase_tengase(tengase_sel, pide_sel)
+    partes_sel = random.choice(b.partes)
+    planes_var = random.choice(b.planes)
+    return variar_frase_tengase(tengase_sel, pide_sel, partes_sel, planes_var)
 
 
 

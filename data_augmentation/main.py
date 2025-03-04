@@ -27,7 +27,13 @@ from . import Concede_apelacion
 from . import Art_numeral as Articulo
 from . import Acoge as Acogida
 from . import Certifiquese
+from . import Dese_cuenta
+from . import Ica_Informa
+from . import Agreguese
+from . import Evacuainforme
+from . import Admisible
 
+from . import Ica_amplia_plazo
 
 def main():
 
@@ -55,6 +61,14 @@ def main():
     data_articulo = Articulo.generar_dataset(300)
     data_acoge = Acogida.generar_dataset(300)
     data_certifiquese = Certifiquese.generar_dataset(300)
+    data_dese_cuenta = Dese_cuenta.generar_dataset(300)
+    data_ica_informa = Ica_Informa.generar_dataset(300)
+    data_ica_agrega = Agreguese.generar_dataset(100)
+    data_evacua_informe = Evacuainforme.generar_dataset(100)
+    data_admisible = Admisible.generar_dataset(30)
+    data_amplia_plazo = Ica_amplia_plazo.generar_dataset(30)
+
+
     # Dataframes por cada clase
     dfs = []
     dfs.append(pd.DataFrame({'frase': data_acuerdo, 'etiqueta': 'Acuerdo'}))
@@ -80,7 +94,12 @@ def main():
     dfs.append(pd.DataFrame({'frase': data_articulo, 'etiqueta': 'Art / Numeral'}))
     dfs.append(pd.DataFrame({'frase': data_acoge, 'etiqueta': 'Acoge'}))
     dfs.append(pd.DataFrame({'frase': data_certifiquese, 'etiqueta': 'Certifiquese'}))
-
+    dfs.append(pd.DataFrame({'frase': data_dese_cuenta, 'etiqueta': 'Dese Cuenta'}))
+    dfs.append(pd.DataFrame({'frase': data_ica_informa, 'etiqueta': 'Ica Informa'}))
+    dfs.append(pd.DataFrame({'frase': data_ica_agrega, 'etiqueta': 'Agréguese A Tabla'}))
+    dfs.append(pd.DataFrame({'frase': data_evacua_informe, 'etiqueta': 'Evacua Informe'}))
+    dfs.append(pd.DataFrame({'frase': data_admisible, 'etiqueta': 'Admisibles'}))
+    dfs.append(pd.DataFrame({'frase': data_amplia_plazo, 'etiqueta': 'Ica Amplia Plazo'}))
 
 
     # Concatenar, eliminar duplicados y barajar

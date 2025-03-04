@@ -4,7 +4,7 @@ from . import base_generator as b
 import numpy as np
 
 
-def variar_frase(accion, motivo, accion_corte, tgse, ca_abrev):
+def variar_frase(accion, motivo, accion_corte, tgse, ca_abrev, planes):
     variaciones = [
         # Correctas
         f'La {ca_abrev} {accion_corte} la {accion}, {motivo}.',
@@ -38,7 +38,9 @@ def variar_frase(accion, motivo, accion_corte, tgse, ca_abrev):
         f'La corte {accion_corte} la {accion}, {motivo}.',  
         f'La corte {accion_corte} la {accion} {motivo}.',  
         f'La corte {accion_corte} la {accion}, {motivo} ', 
-        f'La corte {accion_corte} la {accion} {motivo} ',  
+        f'La corte {accion_corte} la {accion} {motivo} ', 
+        f'({planes})Omite Pronunc(rbf)',
+        f'({planes})Omite Pronunciamiento(jql)' 
     ]
     return random.choice(variaciones)
 
@@ -48,7 +50,8 @@ def generar_frase_aleatoria():
     accion_corte = random.choice(['declara inadmisible', 'omite pronunciamiento sobre', 'omte proncunc.', 'inadmis.', 'inadmisible.'])
     tgse_ = random.choice(b.abreviaciones_tengase)
     ca = random.choice(b.abreviaciones_cortes)
-    return variar_frase(accion, motivo, accion_corte, tgse_, ca)
+    planes_var = random.choice(b.planes)
+    return variar_frase(accion, motivo, accion_corte, tgse_, ca, planes_var)
 
 def generar_dataset(n=300):
     return [generar_frase_aleatoria() for _ in range(n)]

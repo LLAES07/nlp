@@ -14,7 +14,9 @@ def variar_frase_acoge(recurso, resolucion, isapre, plan, pronunciamiento):
         f"Acógese la demanda contra {isapre} {resolucion}, respecto del {plan}.",
         f"Se acoge la reclamación y se instruye a {isapre} {pronunciamiento}.",
         f"Queda acogido el {recurso} {resolucion}; {isapre} debe cumplir el {plan}.",
-        f"Se acoge el {recurso} en todas sus partes {resolucion}, debiendo {isapre} {pronunciamiento}."
+        f"Se acoge el {recurso} en todas sus partes {resolucion}, debiendo {isapre} {pronunciamiento}.",
+        f'(NC) Acogida...(JBC)',
+        f'(TF) Acogida...(JPM)'
     ]
     return random.choice(variaciones)
 

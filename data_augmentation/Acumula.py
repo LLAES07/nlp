@@ -17,7 +17,7 @@ def generar_rol():
 def generar_frase_aleatoria():
     rol1 = generar_rol()
     rol2 = generar_rol()
-    abreviaturas = ['Acum.', 'Acumula', 'Acum. a', 'Se acumula a', 'Acumulado a', 'acumúlese', 'tengase por acumulado', 'tgse acumla']
+    abreviaturas = ['Acum.', 'Acumula', 'Acum. a', 'Se acumula a', 'Acumulado a', 'acumúlese', 'tengase por acumulado', 'tgse acumla', 'acumulación']
     abreviatura = random.choice(abreviaturas)  # Escoge una sola abreviatura
     variaciones = [
         f'{abreviatura}:{rol1} con {rol2} de la corte de {random.choice(b.cortes_de_chile)}.',
@@ -29,6 +29,8 @@ def generar_frase_aleatoria():
         f'El rol {rol1}, {abreviatura} {rol2}.',
         f'El rol {rol1} ({abreviatura} {rol2}).',
         f'El rol {rol1}  {abreviatura} {rol2}.',
+        f'Acum:Protección-{rol1}',
+        f'{abreviaturas} Autos'
     ]
     return random.choice(variaciones)
 

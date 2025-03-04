@@ -3,7 +3,7 @@ from . import base_generator as b
 import numpy as np
 
 # Función para generar variaciones de frases de apercibimiento
-def variar_frase_apercibe(razon_inadmisible, num, corte, inadmisible_):
+def variar_frase_apercibe(razon_inadmisible, num, corte, inadmisible_, planes):
     # Lista de plantillas de frases con variaciones
     variaciones = [
         f"Se declara {inadmisible_} por {razon_inadmisible}",
@@ -12,6 +12,14 @@ def variar_frase_apercibe(razon_inadmisible, num, corte, inadmisible_):
         f"Declara {inadmisible_} por la corte de {corte}",
         f"Inadm. {razon_inadmisible}",
         f"Por {razon_inadmisible} a lo solicitado por la corte de {corte} téngase por declarado la {inadmisible_}",
+        f'Se Pronuncia Incompet/rechaza',
+        f'Se Pronuncia Incompet/acoge',
+        f'({planes})desarch/Incomp(rbf)',
+        f'({planes})desarch/Incomp(jbl)',
+        f'({planes})desarch/Incomp(qlk)'
+
+
+
 
     ]
     return random.choice(variaciones)
@@ -22,7 +30,8 @@ def genera_frase_aleatorea():
     num = random.choice(np.arange(100))
     corte_sel = random.choice(b.cortes_de_chile)
     inadmisible = random.choice(b.inadmisible_formas)
-    return variar_frase_apercibe(inadmisible_razones, num, corte_sel, inadmisible)
+    planes_var = random.choice(b.planes)
+    return variar_frase_apercibe(inadmisible_razones, num, corte_sel, inadmisible, planes_var)
 
 def generar_dataset(n=300):
     return [genera_frase_aleatorea() for _ in range(n)]

@@ -3,7 +3,7 @@ from . import base_generator as b
 import numpy as np
 
 
-def variar_frase(item, decision, costo, motivo):
+def variar_frase(item, decision, costo, motivo, planes):
     variaciones = [
         # Correctas
         f'El {item} se {decision}a {costo}, por {motivo}.',
@@ -14,6 +14,9 @@ def variar_frase(item, decision, costo, motivo):
         f'El {item} ha sido {decision}o {costo} por {motivo}.',
         f'Rechaza, sin costas',
         f'Rechaza con costas reguladas en 200',
+        f'({planes})Rechazada (JQQ)'
+        f'NMV Litis/Rechazada {planes}',
+        f'({planes})Rechazada/MasVida(JQQ)'
         
         # Con errores comunes
         f'El {item} se {decision}a {costo}, por {motivo}',  # Falta de punto al final
@@ -31,7 +34,8 @@ def generar_frase_aleatoria():
     recurso = random.choice(b.recursos)
     decision, costo = random.choice(b.decisiones_rechaza)
     motivo = random.choice(b.motivos_rechaza)
-    return variar_frase(recurso, decision, costo, motivo)
+    planes_var = random.choice(b.planes)
+    return variar_frase(recurso, decision, costo, motivo, planes_var)
 
 
 def generar_dataset(n=300):

@@ -3,7 +3,7 @@ import random
 from . import base_generator as b
 import numpy as np
 
-def variar_frase(profesion, causal, titulos, nombres):
+def variar_frase(profesion, causal, titulos, nombres, apellido_):
     variaciones = [
         # Correctas
         f'El {profesion} se declara inhábil {causal}.',
@@ -20,8 +20,10 @@ def variar_frase(profesion, causal, titulos, nombres):
         f'Por {causal}, el {profesion} declara su inhabilidad.',
         f'El {profesion} está inhabilitado debido a {causal}.',
         f'La inhabilidad del {profesion} se basa en {causal}.',
-        f'Declara inab. Sr. {titulos} {nombres}',
-        f''
+        f'Declara inab. {titulos} {nombres}',
+        f'Inhabilid {titulos} {nombres} {apellido_}',
+        f'Inhabilidad {titulos} {nombres} {apellido_}',
+        f'Inhabilidad de {profesion}. Int. JOA'
         
         # Con errores comunes
         f'El {profesion} se declara inhábil {causal}',  # Falta de punto al final
@@ -45,7 +47,12 @@ def variar_frase(profesion, causal, titulos, nombres):
         f"Inhabilidad declarada por {titulos} {nombres}",
         f"{titulos} {nombres} - Inhabilidad",
         f"Inhabilidad - {titulos} {nombres}",
-        f"Se inhabilita {titulos} {nombres}"
+        f"Se inhabilita {titulos} {nombres}",
+        f'Decl.inh',
+        f'Decl.inh minis. roberto',
+        f'Decl.inh minis. Maria Tereza',
+        f'Decl.inh abog.',
+        'Decl.inh abogado integrante'
     ]
     return random.choice(variaciones)
 
@@ -54,7 +61,8 @@ def generar_frase_aleatoria():
     causal = random.choice(b.causales)
     titulo = random.choice(b.titulos)
     nombre = random.choice(b.nombres)
-    return variar_frase(profesion, causal, titulo, nombre)
+    apellido = random.choice(b.apellidos_)
+    return variar_frase(profesion, causal, titulo, nombre, apellido)
 
 # Generar varias frases aleatorias
 def generar_dataset(n=300):
