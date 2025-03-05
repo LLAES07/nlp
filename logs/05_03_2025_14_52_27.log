@@ -1,0 +1,12 @@
+[2025-03-05 14:52:33,830] 24 root - INFO - Iniciando el proceso de lectura de la inyección de componentes
+[2025-03-05 14:52:33,939] 29 root - INFO - Lectura del archvio exitosa
+[2025-03-05 14:52:33,939] 32 root - INFO - La carpeta ha sido generada o ya está presente
+[2025-03-05 14:52:33,939] 35 root - INFO - Comienzo generación datos aumentados
+[2025-03-05 14:52:33,991] 41 root - INFO - Datos aumentados generados
+[2025-03-05 14:52:33,991] 44 root - INFO - Concatenación de los datos originales con los aumentados
+[2025-03-05 14:52:33,996] 49 root - INFO - Datos revueltos
+[2025-03-05 14:52:34,253] 57 root - INFO - Datos Guardados en artifcacts train.data
+[2025-03-05 14:52:34,253] 60 root - INFO - Archivo raw ha sido creado
+[2025-03-05 14:52:34,371] 79 root - INFO - Leyendo los datos de entrenamiento
+[2025-03-05 14:52:34,638] 91 root - INFO - Pipeline guardado en artifacts\preprocessor.pkl
+[2025-03-05 14:52:34,646] 77 root - INFO - Transformación de datos finalizada correctamente.

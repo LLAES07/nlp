@@ -1,0 +1,45 @@
+[2025-03-05 17:06:32,374] 105 root - INFO - Leyendo los datos de entrenamiento
+[2025-03-05 17:06:32,696] 72 root - INFO - Número total de palabras únicas en el corpus: 3526
+[2025-03-05 17:06:32,697] 73 root - INFO - Total de palabras consideradas en el tokenizador: 3527
+[2025-03-05 17:06:32,822] 82 root - INFO - Tokenizer guardado correctamente en artifacts\tokenizer.pkl
+[2025-03-05 17:06:32,822] 83 root - INFO - Tamaño del vocabulario (incluyendo OOV): 3528
+[2025-03-05 17:06:32,896] 92 root - INFO - Longitud máxima de una oración antes del padding: 88
+[2025-03-05 17:06:32,896] 93 root - INFO - Longitud máxima establecida para padding: 88
+[2025-03-05 17:06:32,901] 131 root - INFO - Label Encoder guardado en artifacts\label_encoder.pkl
+[2025-03-05 17:06:32,901] 133 root - INFO - Cantidad de clases únicas en CLASIFICACION_CORRECTA: 29
+[2025-03-05 17:06:32,902] 134 root - INFO - Distribución de clases:
+CLASIFICACION_CORRECTA
+Ica Solicita Diligencia    499
+Agréguese A Tabla          437
+Evacua Informe             413
+Ica Informa                391
+Dese Cuenta                358
+Apercibe                   355
+Nhl                        337
+Fija Costas                321
+Archivado                  314
+Acoge                      302
+Inadmisible/Omite          302
+Admisibles                 292
+Acumulación                288
+Rechazada                  283
+Retira                     280
+Téngase Presente           279
+Inhabilidad                272
+Prescinde                  271
+Cs                         259
+Certifiquese               253
+Concede Apelación          243
+Multa                      237
+Art / Numeral              216
+Incompetencia              185
+Ica Amplia Plazo           177
+Oni                        150
+Acuerdo                    146
+Inicio Tramitación         136
+Fallo/Desestima            113
+Name: count, dtype: int64
+[2025-03-05 17:06:32,903] 144 root - INFO - Pipeline guardado en artifacts\preprocessor.pkl
+[2025-03-05 17:06:32,903] 146 root - INFO - Forma final de X (padded sequences): (8109, 88)
+[2025-03-05 17:06:32,903] 147 root - INFO - Forma final de y (one-hot encoded labels): (8109, 29)
+[2025-03-05 17:06:32,903] 148 root - INFO - Transformación de datos finalizada correctamente.

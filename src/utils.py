@@ -6,6 +6,8 @@ import pandas as pd
 from src.logger import logging
 from src.exception import CustomExecption
 import dill
+import pickle
+import json
 
 def save_object(file_path, obj):
 
@@ -20,6 +22,26 @@ def save_object(file_path, obj):
     except Exception as e:
         raise CustomExecption(e, sys)
 # Función para limpiar los textos
+
+
+def load_object(file_path):
+    """Carga un objeto desde un archivo pickle."""
+    try:
+        with open(file_path, "rb") as file:
+            return pickle.load(file)
+    except Exception as e:
+        print(f"Error al cargar el objeto desde {file_path}: {e}")
+        return None
+
+
+
+
+def save_metrics(file_path, metrics):
+    """Guarda métricas en un archivo JSON."""
+    with open(file_path, "w") as file:
+        json.dump(metrics, file, indent=4)
+
+
 def cleaning_data(text):
     # Reemplazando parentesis y slash por espacios en blanco
     text = text.replace('(', ' ').replace(')', ' ')

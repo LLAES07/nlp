@@ -1,0 +1,5 @@
+[2025-03-05 15:55:40,630] 94 root - INFO - Leyendo los datos de entrenamiento
+[2025-03-05 15:55:40,823] 68 root - INFO - Total unique words: 3527
+[2025-03-05 15:55:40,955] 77 root - INFO - Tokenizer guardado en artifacts\tokenizer.pkl
+[2025-03-05 15:55:41,035] 123 root - INFO - Pipeline guardado en artifacts\preprocessor.pkl
+[2025-03-05 15:55:41,035] 124 root - INFO - Transformación de datos finalizada correctamente.

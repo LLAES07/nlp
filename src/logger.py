@@ -20,7 +20,8 @@ LOG_FILE_PATH = os.path.join(log_dir, LOG_NAME)
 logging.basicConfig(
     filename=LOG_FILE_PATH,
     level=logging.INFO,
-    format='[%(asctime)s] %(lineno)d %(name)s - %(levelname)s - %(message)s'
+    format='[%(asctime)s] %(lineno)d %(name)s - %(levelname)s - %(message)s',
+    encoding='utf-8'
 )
 
 if __name__ == '__main__':

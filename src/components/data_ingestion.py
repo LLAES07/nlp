@@ -32,17 +32,30 @@ class DataIngestion:
         logging.info('La carpeta ha sido generada o ya está presente')
 
 
-        logging.info('Generando datos aumentados')
+        logging.info('Comienzo generación datos aumentados')
 
         df_augmented = main()
 
         df_augmented.columns=['descripcion', 'CLASIFICACION_CORRECTA']
 
+        logging.info('Datos aumentados generados')
+
+        
+        logging.info('Concatenación de los datos originales con los aumentados')
+
         df = pd.concat([df, df_augmented], ignore_index=True)
+
+        
+        logging.info('Datos revueltos')
 
         df = df.sample(frac=1, random_state=42).reset_index(drop=True)
         
+
+
         df.to_csv(self.ingestion_config.train_set_path, index=False, header=True)
+
+        logging.info('Datos Guardados en artifcacts train.data')
+
         
         logging.info('Archivo raw ha sido creado')
 
