@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Página Principal{% endblock %}
+
+{% block content %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+<!-- Agrega un campo oculto para el CSRF token -->
+<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+
+<!-- Contenedor centrado -->
+<div class="inputer">
+  <div style="text-align: center;">
+    <h1 style="font-size: 3rem; margin-bottom: 2rem;">Ingrese el texto a predecir</h1>
+    
+    <!-- Barra de búsqueda y botón -->
+    <input type="text" id="userText" class="model-input" placeholder="Ingresa tu texto aquí">
+    <button id="predictBtn" class="btn btn-primary">Predecir</button>
+
+    <!-- Aquí se mostrará el resultado -->
+    <div id="predictionResult" style="margin-top: 20px; font-weight: bold;"></div>
+  </div>
+</div>
+
+<!-- Script para manejar la petición AJAX -->
+<script>
+  const csrfInput = document.querySelector('[name=csrfmiddlewaretoken]');
+  if (!csrfInput) {
+    console.error('No se encontró el input CSRF. Asegúrate de incluir {% csrf_token %} o un campo oculto similar.');
+  }
+  const csrftoken = csrfInput ? csrfInput.value : '';
+
+  document.getElementById('predictBtn').addEventListener('click', function() {
+    const textValue = document.getElementById('userText').value;
+
+    fetch('{% url "predict_api" %}', {
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': csrftoken,
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: new URLSearchParams({text: textValue})
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.prediction) {
+        let tableHtml = '<table class="table table-striped" style="margin: 0 auto; text-align: left;">';
+        tableHtml += '<thead><tr><th>Clasificacion</th><th>Probability</th></tr></thead><tbody>';
+        data.prediction.forEach(function(item) {
+          tableHtml += `<tr><td>${item.clasificacion}</td><td>${item.probabilidad.toFixed(4)}</td></tr>`;
+        });
+        tableHtml += '</tbody></table>';
+        document.getElementById('predictionResult').innerHTML = tableHtml;
+      } else if (data.error) {
+        document.getElementById('predictionResult').textContent = `Error: ${data.error}`;
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      document.getElementById('predictionResult').textContent = 'Error en la petición.';
+    });
+  });
+</script>
+
+{% endblock %}

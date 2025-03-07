@@ -1,0 +1,13 @@
+.container {
+    /* Aquí van tus estilos */
+    max-width: 1200px;
+    padding: 20px;
+    top: 20px;
+}
+
+.container h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center !important;
+}

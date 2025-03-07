@@ -1,0 +1,30 @@
+body {
+    background-color: #030303; /* Reemplaza #f0f0f0 por el color que desees */
+}
+
+
+.model-input {
+    width: 50%; 
+    padding: 1rem; 
+    font-size: 1.2rem; 
+    border: 1px solid #ccc; 
+    border-radius: 24px;
+}
+
+h1 {
+    color: aliceblue;
+    font-weight: bold;
+}
+
+.inputer {
+    display: flex; 
+    align-items: center; 
+    justify-content:center; 
+    height: 100vh;
+}
+
+#predictionResult {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #0f0;  
+  }

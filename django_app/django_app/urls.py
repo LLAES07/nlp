@@ -16,8 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from .views import main_view
+from .views import predict_api
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('nlp_app/', include('nlp_app.urls'))
+    path('nlp_app/', include('nlp_app.urls')),
+    path('', main_view, name='main'),  # Esto hace que la URL vacía ('') de django_app redirija a main_view
+    path('predict_api/', predict_api, name='predict_api'),  # Endpoint para AJAX
+
 ]

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{% block title %}
+Agregar Nuevo Registro
+{% endblock %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <h1>Agregar Nuevo Registro</h1>
+
+    <!-- Formulario para agregar un nuevo registro -->
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            {% crispy form 'bootstrap5' %}
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+    <hr>
+    <h2>Registros Existentes</h2>
+    <ul>
+        {% for registro in form_sendings %}
+            <li>{{ registro }}</li>
+        {% empty %}
+            <li>No hay registros aún.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
