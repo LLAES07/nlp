@@ -16,6 +16,8 @@ from tensorflow.keras.optimizers import Adam
 from sklearn.utils.class_weight import compute_class_weight
 from src.utils import save_metrics
 import matplotlib.pyplot as plt
+from sklearn.metrics import classification_report, confusion_matrix
+import seaborn as sns
 
 @dataclass
 class ModelTrainingConfig:
@@ -80,30 +82,64 @@ class ModelTrainer:
             loss, accuracy = model.evaluate(X_test, y_test)
             logging.info(f"Precisión del modelo en test: {accuracy:.4f}")
 
-            metrics = {
+            train_metrics = {
             "loss": loss,
             "accuracy": accuracy,
             "epochs": len(history.history['loss']),
             "val_loss": history.history['val_loss'][-1],
             "val_accuracy": history.history['val_accuracy'][-1]
-            }
-            save_metrics(self.config.metrics_path, 
-                         metrics)
-            
-            logging.info(f"Métricas guardadas en {self.config.metrics_path}")
+        }
 
 
             # Guardar el modelo
             save_object(self.config.trained_model_file_path, obj=model)
             logging.info(f"Modelo guardado en {self.config.trained_model_file_path}")
 
-            return model, history
+            return model, history, train_metrics
 
         except Exception as e:
             logging.error("Error durante el entrenamiento del modelo LSTM")
             raise e
 
+    def metricas_clases(self, X_test, y_test ,model, label_encoder, file_path='artifacts/heatmap.png'):
 
+        """
+        Función que genera probabilidades para el conjunto de prueba y las combierte a las clases predichas. También genera informe de clasificación y matriz de confusion.
+        return: Retorna un dataframe con el clasification report.
+        """
+        # Predecir las probabilidades para el conjunto de prueba
+        y_pred_probs = model.predict(X_test)
+
+        # Convertir las probabilidades a clases predichas
+        y_pred = np.argmax(y_pred_probs, axis=1)
+
+        # Obtener las etiquetas reales
+        y_true = np.argmax(y_test, axis=1)
+
+        # Generar el informe de clasificación
+        print("Informe de clasificación:")
+        print(classification_report(y_true, y_pred, target_names=label_encoder.classes_))
+        
+        classification_report_dict = classification_report(y_true, y_pred,  labels=np.arange(28)
+            ,target_names=label_encoder.classes_, output_dict=True)
+
+        df_cr = pd.DataFrame(classification_report_dict).transpose()
+
+        # Generar la matriz de confusión
+        cm = confusion_matrix(y_true, y_pred)
+
+        # Visualizar la matriz de confusión
+        plt.figure(figsize=(12, 8))
+        sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=label_encoder.classes_, yticklabels=label_encoder.classes_)
+        plt.ylabel('Etiqueta Real')
+        plt.xlabel('Etiqueta Predicha')
+        plt.title('Matriz de Confusión')
+        plt.show()
+
+        plt.savefig(file_path)
+
+
+        return df_cr
     def plot_training_history(self, history, file_path="artifacts/training_plot.png"):
         """Genera y guarda un gráfico del historial de entrenamiento."""
         plt.figure(figsize=(10, 5))
@@ -142,7 +178,8 @@ class ModelTrainer:
 
             # Cargar el Tokenizer guardado
             from src.utils import load_object
-            tokenizer = load_object("artifacts/tokenizer.pkl")  
+            tokenizer = load_object("artifacts/tokenizer.pkl") 
+            label_encoder= load_object('artifacts/label_encoder.pkl')
 
             # Obtener tamaño correcto del vocabulario
             vocab_size = len(tokenizer.word_index) + 1  
@@ -151,13 +188,30 @@ class ModelTrainer:
 
             # Construir y entrenar el modelo
             logging.info("Construyendo y entrenando el modelo LSTM...")
-            model, history = self.entrenar_modelo(X_train, X_test, y_train, y_test, vocab_size, max_sequence_len, num_classes)
+            model, history, train_metrics = self.entrenar_modelo(X_train, X_test, y_train, y_test, vocab_size, max_sequence_len, num_classes)
 
             logging.info("Modelo entrenado exitosamente.")
 
             self.plot_training_history(history, "artifacts/training_plot.png")
             logging.info("Gráfica de entrenamiento guardada en artifacts/training_plot.png")
-         
+
+
+            df_cr = self.metricas_clases(X_test, y_test, model, label_encoder)
+                    # Convertir el DataFrame del classification report a diccionario
+            classification_metrics = df_cr.to_dict()            
+            logging.info("Metricas")
+
+            combined_metrics = {
+            "train_metrics": train_metrics,
+            "classification_metrics": classification_metrics
+            }
+
+            save_metrics(self.config.metrics_path, combined_metrics)
+            logging.info(f"Métricas combinadas guardadas en {self.config.metrics_path}")
+
+
+
+
             return model, history
 
         except Exception as e:

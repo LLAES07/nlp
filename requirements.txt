@@ -12,3 +12,7 @@ openpyxl
 spacy
 seaborn
 dill
+django
+pylint-django
+django-crispy-forms
+crispy-bootstrap5

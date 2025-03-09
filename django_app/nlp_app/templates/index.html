@@ -2,37 +2,57 @@
 {% load crispy_forms_tags %}
 {% load static %}
 
-
 {% block title %}
 Agregar Nuevo Registro
 {% endblock %}
 
-
-{% block css %}
-<link rel="stylesheet" href="{% static 'css/styles.css' %}">
-{% endblock %}
-
-
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+<div class="menu">
+    <div>
+        <a href="javascript:history.back()" class="btn btn-primary">Atrás</a>
+    </div>
+</div>
 <div class="container">
     <h1>Agregar Nuevo Registro</h1>
-
     <!-- Formulario para agregar un nuevo registro -->
     <div class="container">
-        <form method="POST">
+        <form method="POST" action="">
             {% csrf_token %}
-            {% crispy form 'bootstrap5' %}
+            {{ form.as_p }}
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
     </div>
     <hr>
     <h2>Registros Existentes</h2>
-    <ul>
-        {% for registro in form_sendings %}
-            <li>{{ registro }}</li>
-        {% empty %}
-            <li>No hay registros aún.</li>
-        {% endfor %}
-    </ul>
+    
+    <!-- Contenedor donde se inyectará la tabla -->
+    <div id="recordsTable"></div>
 </div>
+
+<!-- Script para obtener y construir la tabla -->
+<script>
+    // Usa fetch para obtener los registros en JSON desde el endpoint
+    fetch("{% url 'nlp_app:get_records' %}")
+      .then(response => response.json())
+      .then(data => {
+          let tableHtml = "<table class='table table-striped' style='margin: 0 auto; text-align: left;'>";
+          tableHtml += "<thead><tr><th>Descripción</th><th>Nombre</th><th>Categoría</th><th>Status</th></tr></thead><tbody>";
+          data.records.forEach(function(record) {
+              tableHtml += `<tr>
+                  <td>${record.descripcion}</td>
+                  <td>${record.nombre}</td>
+                  <td>${record.categoria}</td>
+                  <td>${record.status}</td>
+              </tr>`;
+          });
+          tableHtml += "</tbody></table>";
+          document.getElementById("recordsTable").innerHTML = tableHtml;
+      })
+      .catch(error => {
+          console.error("Error al cargar registros:", error);
+          document.getElementById("recordsTable").innerHTML = "<p>Error al cargar registros.</p>";
+      });
+</script>
 {% endblock %}

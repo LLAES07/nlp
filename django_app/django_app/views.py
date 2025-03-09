@@ -19,13 +19,9 @@ def predict_api(request):
     Retorna un JSON con la predicción.
     """
     if request.method == 'POST':
-        # Obtén el texto enviado desde JavaScript
+        # Obtener el texto enviado desde JavaScript
         user_text = request.POST.get('text', '')
-        
-
-
-        # Preprocesa si hace falta (tokenizar, normalizar, etc.)
-        # Realiza la predicción con el modelo
+    
         prediction = predict_label(user_text)
 
         # Retorna un JSON con el resultado

@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock %}
 
-<!-- Agrega un campo oculto para el CSRF token -->
+<!-- campo oculto para el CSRF token -->
 <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
 
 <!-- Contenedor centrado -->
@@ -20,6 +20,7 @@
     <!-- Barra de búsqueda y botón -->
     <input type="text" id="userText" class="model-input" placeholder="Ingresa tu texto aquí">
     <button id="predictBtn" class="btn btn-primary">Predecir</button>
+    <a href="{% url 'nlp_app:index' %}" class="btn btn-primary">Añadir dato</a>
 
     <!-- Aquí se mostrará el resultado -->
     <div id="predictionResult" style="margin-top: 20px; font-weight: bold;"></div>
